@@ -98,7 +98,7 @@ class AIWebScraper:
             api_key = openai_api_key or os.getenv('OPENAI_API_KEY')
             if api_key:
                 self.openai_client = OpenAI(api_key=api_key)
-                self.logger.info("✅ OpenAI AI Agent initialized successfully")
+                self.logger.info("✅ OpenAI GPT-4 AI Agent initialized successfully")
             else:
                 self.logger.warning("⚠️ OpenAI API key not provided. AI features disabled.")
         
@@ -167,7 +167,7 @@ class AIWebScraper:
             """
             
             response = self.openai_client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {"role": "system", "content": "You are an expert content analyst specializing in multilingual embassy and government websites. Respond only with valid JSON."},
                     {"role": "user", "content": analysis_prompt}
@@ -223,7 +223,7 @@ class AIWebScraper:
             """
             
             response = self.openai_client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4",
                 messages=[
                     {"role": "system", "content": f"You are a professional translator. Translate content accurately to {language_map[target_language]}, preserving formatting and meaning."},
                     {"role": "user", "content": translate_prompt}
